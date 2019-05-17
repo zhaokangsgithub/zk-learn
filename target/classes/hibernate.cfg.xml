@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 导入dtd约束：
+位置：在核心jar包中的名称为hibernate-configuration-3.0.dtd
+-->
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <!-- 配置SessionFactory
+       SessionFactory就是一个工厂，用于生产Session对象的。
+       Session就是我们使用hibernate操作数据库的核心对象了。
+       明确：
+           它和我们Web阶段的HttpSession没一点关系。
+           此配置文件中的内容不需要背，很多配置都是可以在开发包中找到的。
+           但是要求必须知道：
+           创建SessionFactory由三部分组成：(缺一不可)
+           1、连接数据库的基本信息
+           2、hibernate的基本配置
+           3、映射文件的位置
+           找配置文件的key都是在hibernate的开发包中project文件夹下的etc目录中的hibernate.properties
+           路径：...\hibernate-release-5.0.7.Final\project\etc\hibernate.properties
+    -->
+    <session-factory>
+        <!-- 1、数据库的基本信息 -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://120.78.172.84:3306/zkdb</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">Mysql0110.</property>
+        <!-- 数据库的方言 -->
+        <!-- 新版本的数据库方言：org.hibernate.dialect.MySQL5Dialect -->
+        <!-- 老版本的数据库方言：org.hibernate.dialect.MySQLDialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+        <!-- 把session绑定到当前线程上 -->
+        <property name="hibernate.current_session_context_class">thread</property>
+        <!-- 2、hibernate的基本配置 -->
+        <!-- 是否显示SQL语句 -->
+        <property name="hibernate.show_sql">true</property>
+        <!-- 是否格式化SQL语句 -->
+        <property name="hibernate.format_sql">true</property>
+        <!-- 3、映射文件的位置 -->
+        <mapping resource="com/hzzl/demo/hibernate/User.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

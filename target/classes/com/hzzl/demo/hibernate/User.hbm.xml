@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 导入DTD约束
+位置：在Hibernate的核心jar包(hibernate-core-5.0.7.Final.jar)中名称为hibernate-mapping-3.0.dtd
+明确该文件中的内容：
+	实体类和表的对应关系
+	实体类中属性和表的字段的对应关系
+-->
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hzzl.demo.hibernate">
+    <!-- package属性用于设定包的名称，接下来该配置文件中凡是用到此包中的对象时都可以省略包名 -->
+    <!-- class标签
+			作用：建立实体类和表的对应关系
+			属性：
+				name：指定实体类的名称
+				table：指定数据库表的名称
+	 -->
+
+    <class name="User" table="user">
+        <!-- id标签
+			 作用：用于映射主键
+			 属性：
+			 	name：指定的是属性名称。也就是get/set方法后面的部分，并且首字母要转小写。
+			 	column:指定的是数据库表的字段名称
+		-->
+        <id name="id" column="id">
+            <generator class="native"></generator>
+        </id>
+        <property name="name" column="name"></property>
+        <property name="password" column ="password"></property>
+        <property name="salt" column ="salt"></property>
+        <property name="headUrl" column ="head_url"></property>
+    </class>
+
+</hibernate-mapping>
