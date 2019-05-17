@@ -2,7 +2,9 @@ package com.hzzl.demo;
 
 import com.hzzl.demo.mymvc.MyServlet;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +17,7 @@ import org.springframework.context.annotation.Bean;
  */
 @SpringBootApplication
 @ServletComponentScan
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class Application {
     public static void main(String[] args) {
 //        SpringApplication app = new SpringApplication(Application.class);
@@ -27,9 +30,9 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
+    /*@Bean
     public ServletRegistrationBean MyServlet() {
         return new ServletRegistrationBean(new MyServlet(), "/*");
-    }
+    }*/
 
 }
