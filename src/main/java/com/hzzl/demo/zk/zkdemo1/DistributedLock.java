@@ -1,4 +1,4 @@
-package com.hzzl.demo.zk;
+package com.hzzl.demo.zk.zkdemo1;
 
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
@@ -26,7 +26,7 @@ public class DistributedLock implements Watcher, Lock
     private ZooKeeper zk = null;
 
     // 根节点
-    private String ROOT_LOCK = "/locks";
+    private static final String ROOT_LOCK = "/locks";
 
     // 竞争的资源
     private String lockName;
@@ -188,7 +188,9 @@ public class DistributedLock implements Watcher, Lock
         return false;
     }
 
-    // 等待锁
+    /**
+     * 等待锁
+     */
     private boolean waitForLock(String prev, long waitTime)
         throws KeeperException, InterruptedException
     {

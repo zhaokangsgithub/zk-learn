@@ -1,7 +1,10 @@
-package com.hzzl.demo.zk;
+package com.hzzl.demo.zk.zkdemo1;
 
-import org.junit.jupiter.api.Test;
-import java.util.concurrent.CountDownLatch;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * ClassName:  <br/>
@@ -21,17 +24,16 @@ public class ZKLockTest
         System.out.println(--n);
     }
 
-//    static CountDownLatch threadLatch = new CountDownLatch(10);
-
     public static void main(String[] args)
     {
+        ThreadPoolExecutor threadPools = new ThreadPoolExecutor(10,10,1000,TimeUnit.MILLISECONDS,new LinkedBlockingDeque()
+        ,  new ThreadFactoryBuilder().setNameFormat("XX-task-%d").build());
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 DistributedLock lock = null;
                 try {
                     lock = new DistributedLock("127.0.0.1:2181", "test1");
-//                    threadLatch.await();
                     lock.lock();
                     secskill();
                     System.out.println(Thread.currentThread().getName() + "正在运行");
@@ -46,9 +48,7 @@ public class ZKLockTest
         };
 
         for (int i = 0; i < 10; i++) {
-            Thread t = new Thread(runnable);
-//            threadLatch.countDown();
-            t.start();
+            threadPools.execute(runnable);
         }
     }
 }

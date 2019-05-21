@@ -34,7 +34,4 @@ public class PropUtil {
         String prop = getProp("discounts.calc.super-vip",PROP_ROOT_PATH+"application.properties");
         System.out.println(prop);
     }
-
-
-
 }

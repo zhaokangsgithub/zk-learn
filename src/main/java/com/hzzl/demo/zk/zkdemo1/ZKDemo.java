@@ -1,4 +1,4 @@
-package com.hzzl.demo.zk;
+package com.hzzl.demo.zk.zkdemo1;
 
 import org.I0Itec.zkclient.IZkDataListener;
 import org.I0Itec.zkclient.ZkClient;
@@ -7,17 +7,11 @@ import org.apache.zookeeper.CreateMode;
 /**
  * ClassName:  <br/>
  * Function:  ADD FUNCTION. <br/>
- * Reason:  ADD REASON(可选). <br/>
- * date:   <br/>
  *
  * @author
  * @since JDK 1.6
  */
-
-
-
 public class ZKDemo {
-
 
     private static final String ZK_IP_PORT = "127.0.0.1:2181";
 
