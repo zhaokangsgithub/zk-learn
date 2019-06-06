@@ -1,8 +1,5 @@
 package com.hzzl.demo.collectiondemo;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.*;
 
 /**
@@ -172,14 +169,17 @@ class EDemo<E> {
 
 }
 
+class MyMap<T> extends HashMap{
 
-class ProcessDemo {
+}
+
+class ProcessDemo<T> {
 
 	/**
 	 * 列出所有的进程信息
 	 */
 	public static void main(String[] args) {
-		BufferedReader br = null;
+		/*BufferedReader br = null;
 		Process process = null;
 		try {
 			process = Runtime.getRuntime().exec("tasklist");
@@ -202,6 +202,54 @@ class ProcessDemo {
 			if (process != null) {
 				process.destroy();
 			}
-		}
+		}*/
+        try
+        {
+            HashMap hashMap = new HashMap();
+            hashMap.put("name","zhansgan");
+            Map m = (HashMap)selectOne(hashMap);
+            System.out.println(m.get("name"));
+        }
+        catch (IllegalAccessException e)
+        {
+            e.printStackTrace();
+        }
+        catch (InstantiationException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
+
+	public static <T> T selectOne(T name)
+        throws IllegalAccessException, InstantiationException
+    {
+        Class<?> aClass = name.getClass();
+        Object o = aClass.newInstance();
+
+
+        return name;
+	}
+}
+
+class Person{
+
+	String name;
+
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "person: name:"+name;
 	}
 }
