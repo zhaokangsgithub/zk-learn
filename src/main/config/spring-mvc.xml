@@ -17,12 +17,18 @@
     <aop:aspectj-autoproxy proxy-target-class="true" />-->
 
     <!--1.代理方式设置为 cglib，默认false，则必须通过实现某个接口才能实现增强 -->
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+<!--
     <aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
+-->
     <!--2.配置文件中把须增强注解所在包扫描注入，或者配置 bean-->
     <context:component-scan base-package="com.hzzl.demo.*"/>
+
+    <!--配置注解驱动-->
+    <mvc:annotation-driven/>
+
     <!--&lt;!&ndash;3.配置文件中把@Aspect注解所在类对应包扫描注入 或者配置bean-->
     <!--<context:component-scan base-package="com.hzzl.demo.Aspect"/>-->
-
 
     <!--避免IE执行AJAX时，返回JSON出现下载文件 -->
     <bean id="mappingJackson2HttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">

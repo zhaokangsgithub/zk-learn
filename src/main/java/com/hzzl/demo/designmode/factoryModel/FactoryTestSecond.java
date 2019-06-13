@@ -1,4 +1,4 @@
-package com.hzzl.demo.model.factoryModel;
+package com.hzzl.demo.designmode.factoryModel;
 
 /**
  * ClassName:  <br/>

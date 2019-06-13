@@ -1,10 +1,10 @@
 package com.hzzl.demo.controller;
 
 import com.hzzl.demo.Annotation.CheckCach;
-import com.hzzl.demo.abstractdemo.ApplicationContextProvider;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @ClassName: com.hzzl.demo.controller.TestControlelr2
@@ -18,9 +18,10 @@ public class TestControlelr2 {
 
     @RequestMapping("getData")
     @ResponseBody
-    @CheckCach(value="CheckCach2019/4/4")
-    public String getData(){
-        ApplicationContextProvider.getBean("");
+    @CheckCach
+    public String getData(ModelAndView mv){
+        mv.addObject("test");
+        System.out.println("TestControlelr2.....getData......");
         return "test";
     }
 }

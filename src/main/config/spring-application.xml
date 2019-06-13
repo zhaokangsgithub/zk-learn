@@ -19,7 +19,8 @@
     <!-- 标注类型 的事务配置 如果使用注解事务。就放开 <tx:annotation-driven /> -->
     <tx:annotation-driven />
     <import resource="classpath*:application.properties"/>
-    
+    <context:component-scan base-package="com.hzzl.demo.*"/>
+    <aop:aspectj-autoproxy proxy-target-class="true" />
     <!-- 通过扫描的模式，扫描目录在com.hzcominfo.application.common.base.cmpt.kernel.mapper目录下，所有的mapper都继承SqlMapper接口的接口， 这样一个bean就可以了 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.hzzl.demo.kernel.mapper" />
