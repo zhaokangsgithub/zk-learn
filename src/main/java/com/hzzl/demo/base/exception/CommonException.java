@@ -1,0 +1,27 @@
+package com.hzzl.demo.base.exception;
+
+/**
+ * ClassName:  <br/>
+ * Function:  ADD FUNCTION. <br/>
+ * Reason:  ADD REASON(可选). <br/>
+ * date:   <br/>
+ *
+ * @author
+ * @since JDK 1.6
+ */
+public class CommonException extends Exception
+{
+
+    private String message;
+
+    public CommonException(String message)
+    {
+        this.message = message;
+    }
+
+    @Override
+    public String getMessage()
+    {
+        return this.getMessage();
+    }
+}

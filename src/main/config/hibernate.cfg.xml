@@ -39,6 +39,6 @@
         <!-- 是否格式化SQL语句 -->
         <property name="hibernate.format_sql">true</property>
         <!-- 3、映射文件的位置 -->
-        <mapping resource="com/hzzl/demo/hibernate/User.hbm.xml"/>
+        <mapping resource="com/hzzl/demo/frame/hibernate/User.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

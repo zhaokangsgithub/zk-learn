@@ -23,9 +23,13 @@
     <aop:aspectj-autoproxy proxy-target-class="true" />
     <!-- 通过扫描的模式，扫描目录在com.hzcominfo.application.common.base.cmpt.kernel.mapper目录下，所有的mapper都继承SqlMapper接口的接口， 这样一个bean就可以了 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.hzzl.demo.kernel.mapper" />
+        <property name="basePackage" value="com.hzzl.demo.frame.spring.kernel.mapper" />
     </bean>
-    
+
+    <!-- 配置自定义异常处理器 -->
+    <bean id="handlerExceptionResolver"
+                             class="com.hzzl.demo.base.exception.resolve.CustomExceptionResolver"/>
+
     <!-- 事务配置 -->
     <!-- 降低事务顺序,防止日志插入被回滚 -by sunxy -->
     <tx:annotation-driven transaction-manager="transactionManager" order="4" />
