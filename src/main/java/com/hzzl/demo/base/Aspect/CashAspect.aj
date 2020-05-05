@@ -43,4 +43,9 @@ public aspect CashAspect {
     public void controllerAspect() {
     }
 
+    public static void main(String[] args)
+    {
+        System.out.println("-------");
+    }
+
 }
